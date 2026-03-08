@@ -1,58 +1,43 @@
 ---
+// Timeline section - Minimal horizontal style
+
 const milestones = [
-  {
-    year: '2023',
-    title: '开启一人公司之旅',
-    description: '辞去大厂工作，开始独立创业'
-  },
-  {
-    year: '2023',
-    title: 'OpenClaw 启动',
-    description: '开始龙虾养殖项目，探索农业创新'
-  },
-  {
-    year: '2024',
-    title: '自媒体运营',
-    description: '开始在各大平台分享创业经验'
-  },
-  {
-    year: '2024',
-    title: '产品开发',
-    description: '开发多个独立产品，服务更多用户'
-  },
-  {
-    year: '未来',
-    title: '持续探索',
-    description: '更多可能性等待探索...'
-  }
+  { date: '2026.03', title: '启程', description: '注册 opcfounder.com，开始探索一人公司' },
+  { date: '2026.04', title: 'OpenClaw 启动', description: '开始 AI Agent 项目研发' },
+  { date: '2026.05', title: '自媒体运营', description: '开始分享创业经验' },
+  { date: '2026.06', title: '产品开发', description: '开发独立产品服务用户' }
 ];
 ---
 
-<section class="py-20 bg-gray-50">
+<section class="py-20 bg-slate-900">
   <div class="container mx-auto px-6">
-    <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-bold text-gray-900">创业时间线</h2>
-      <p class="text-xl text-gray-600 mt-4">一路走来的里程碑</p>
-    </div>
+    <div class="max-w-3xl mx-auto">
+      <!-- Section Header -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-2">时间线</h2>
+        <p class="text-slate-500">成长的足迹</p>
+      </div>
 
-    <div class="max-w-4xl mx-auto">
+      <!-- Timeline -->
       <div class="relative">
-        <!-- Timeline line -->
-        <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-orange-200"></div>
+        <!-- Line -->
+        <div class="absolute left-3 top-0 bottom-0 w-px bg-slate-700"></div>
 
-        <!-- Milestones -->
-        <div class="space-y-12">
+        <!-- Items -->
+        <div class="space-y-8">
           {milestones.map((milestone, index) => (
-            <div class={`relative flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
-              <div class={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
-                <div class="bg-white p-6 rounded-xl shadow-lg">
-                  <span class="text-orange-600 font-bold">{milestone.year}</span>
-                  <h3 class="text-xl font-bold text-gray-900 mt-2">{milestone.title}</h3>
-                  <p class="text-gray-600 mt-2">{milestone.description}</p>
-                </div>
-              </div>
+            <div class="relative pl-10">
               <!-- Dot -->
-              <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-orange-600 rounded-full border-4 border-white"></div>
+              <div class={`absolute left-0 top-1.5 w-6 h-6 rounded-full border-2 flex items-center justify-center ${index === 0 ? 'bg-orange-500 border-orange-500' : 'bg-slate-800 border-slate-600'}`}>
+                <div class={`w-2 h-2 rounded-full ${index === 0 ? 'bg-white' : 'bg-slate-500'}`}></div>
+              </div>
+
+              <!-- Content -->
+              <div>
+                <span class="text-xs text-slate-500 font-mono">{milestone.date}</span>
+                <h3 class="text-lg font-semibold text-white mt-1">{milestone.title}</h3>
+                <p class="text-sm text-slate-400 mt-1">{milestone.description}</p>
+              </div>
             </div>
           ))}
         </div>
