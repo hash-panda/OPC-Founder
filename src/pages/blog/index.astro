@@ -6,7 +6,7 @@ const articles = [
     slug: 'why-opc',
     title: '为什么选择一人公司？',
     date: '2026-03-01',
-    excerpt: '从大厂离职后，我开始思考：一个人能做什么？答案是——很多。',
+    excerpt: 'AI的火热，让我开始思考：一个人能做什么？答案是——很多。',
     tags: ['思考', '创业']
   },
   {
@@ -44,13 +44,12 @@ function formatDate(dateStr: string) {
         <!-- Articles List -->
         <div class="space-y-6">
           {articles.map((article) => (
-            <a
-              href={`/blog/${article.slug}`}
-              class="block group p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-slate-700 transition-all"
+            <div
+              class="block group p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-slate-700 transition-all cursor-default"
             >
               <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                 <div class="flex-1">
-                  <h2 class="text-lg font-semibold text-white group-hover:text-orange-400 transition-colors mb-2">
+                  <h2 class="text-lg font-semibold text-white mb-2">
                     {article.title}
                   </h2>
                   <p class="text-slate-400 text-sm leading-relaxed">
@@ -72,7 +71,7 @@ function formatDate(dateStr: string) {
                   {formatDate(article.date)}
                 </div>
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </div>
