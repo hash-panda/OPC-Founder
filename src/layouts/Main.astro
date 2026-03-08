@@ -1,0 +1,25 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+---
+<header>
+	 <div class="logo">
+    <a href="/" class="text-2xl font-bold text-orange-600">OPC FOUNDER</a>
+  </div>
+  <nav>
+    <a href="#projects" class="hover:text-orange-500 transition-colors">Projects</a>
+    <a href="#about" class="hover:text-orange-500 transition-colors">About</a>
+    <a href="#contact" class="hover:text-orange-500 transition-colors">Contact</a>
+  </nav>
+</header>
+
+<footer class="bg-gray-900 text-white py-12">
+  <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+    <p class="text-gray-400">&copy; {new Date().getFullYear()} OPC Founder. All rights reserved.</    <div class="flex gap-6">
+      <a href="#" class="text-gray-300 hover:text-white transition-colors">Twitter</a>
+      <a href="#" class="text-gray-300 hover:text-white transition-colors">GitHub</a>
+      <a href="#" class="text-gray-300 hover:text-white transition-colors">Email</a>
+    </div>
+  </div>
+</footer>

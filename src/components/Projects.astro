@@ -1,0 +1,66 @@
+---
+const projects = [
+  {
+    id: 'openclaw',
+    title: 'OpenClaw',
+    subtitle: '龙虾养殖品牌',
+    description: '从零到一的农业创业实验，探索现代化龙虾养殖的新可能。',
+    icon: '🦞',
+    color: 'from-red-500 to-orange-500',
+    link: 'https://openclaw.com',
+    tags: ['农业', '养殖', '品牌']
+  },
+  {
+    id: 'content',
+    title: '自媒体',
+    subtitle: '内容创作',
+    description: '分享创业心得、技术干货、生活感悟，记录一人公司的成长之路。',
+    icon: '📱',
+    color: 'from-purple-500 to-pink-500',
+    link: '#',
+    tags: ['内容', '分享', '创业']
+  },
+  {
+    id: 'dev',
+    title: '产品开发',
+    subtitle: '独立开发',
+    description: '独立开发的产品和技术项目，用代码解决真实问题。',
+    icon: '💻',
+    color: 'from-blue-500 to-cyan-500',
+    link: '#',
+    tags: ['技术', '产品', 'SaaS']
+  }
+];
+---
+
+<section id="projects" class="py-20 bg-gray-50">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900">我的项目</h2>
+      <p class="text-xl text-gray-600 mt-4">一人公司，多元探索</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {projects.map((project) => (
+        <a
+          href={project.link}
+          class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+        >
+          <div class={`w-16 h-16 rounded-xl bg-gradient-to-br ${project.color} flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform`}>
+            {project.icon}
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-2">{project.title}</h3>
+          <p class="text-orange-600 font-medium mb-4">{project.subtitle}</p>
+          <p class="text-gray-600 mb-6">{project.description}</p>
+          <div class="flex flex-wrap gap-2">
+            {project.tags.map((tag) => (
+              <span class="px-3 py-1 bg-gray-100 text-gray-600 text-sm rounded-full">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
