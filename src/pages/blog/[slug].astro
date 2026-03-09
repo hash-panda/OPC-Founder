@@ -1,0 +1,110 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+---
+
+<Layout title={`${post.data.title} - OPC Founder`}>
+  <article class="py-20 pt-28 min-h-screen bg-[#0a0a0a]">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto">
+        <!-- Back Link -->
+        <a
+          href="/blog"
+          class="inline-flex items-center gap-2 text-white/60 hover:text-teal-400 transition-colors mb-8 animate-on-scroll"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          返回文章列表
+        </a>
+
+        <!-- Header -->
+        <header class="mb-12 animate-on-scroll">
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-2 mb-4">
+            {post.data.tags.map((tag) => (
+              <span class="px-3 py-1 text-xs text-teal-400 bg-teal-500/10 rounded-full">
+                #{tag}
+              </span>
+            ))}
+          </div>
+
+          <!-- Title -->
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+            {post.data.title}
+          </h1>
+
+          <!-- Meta -->
+          <div class="flex flex-wrap items-center gap-6 text-white/60">
+            <span class="flex items-center gap-2">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              {formatDate(post.data.pubDate)}
+            </span>
+            <span class="flex items-center gap-2">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12,6 12,12 16,14"/>
+              </svg>
+              {post.data.readTime}
+            </span>
+          </div>
+        </header>
+
+        <!-- Content -->
+        <div class="prose prose-lg prose-invert max-w-none animate-on-scroll
+          prose-headings:text-white prose-headings:font-bold
+          prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:text-white
+          prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-white
+          prose-p:text-white/80 prose-p:leading-relaxed prose-p:mb-6
+          prose-a:text-teal-400 prose-a:no-underline hover:prose-a:underline
+          prose-strong:text-white
+          prose-ul:text-white/80 prose-ol:text-white/80
+          prose-li:marker:text-teal-400
+          prose-blockquote:border-l-teal-500 prose-blockquote:bg-[#111111] prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-xl prose-blockquote:not-italic prose-blockquote:text-white/70
+          prose-code:text-teal-400 prose-code:bg-[#1a1a1a] prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
+          prose-pre:bg-[#111111] prose-pre:border prose-pre:border-[#2a2a2a]
+        ">
+          <Content />
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-16 pt-8 border-t border-[#2a2a2a] animate-on-scroll">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div class="text-white/60 text-sm">
+              最后更新于 {post.data.updatedDate ? formatDate(post.data.updatedDate) : formatDate(post.data.pubDate)}
+            </div>
+            <a
+              href="/blog"
+              class="inline-flex items-center gap-2 px-6 py-3 bg-white/5 text-white rounded-xl border border-white/10 hover:border-teal-500/50 hover:bg-teal-500/10 transition-all duration-300"
+            >
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+              </svg>
+              查看更多文章
+            </a>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </article>
+</Layout>
