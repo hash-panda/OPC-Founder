@@ -1,5 +1,5 @@
 ---
-// Hero section - Dynamic creative design
+// Hero section - Dynamic creative design with 3D visual
 const roles = ['AI Agent 构建者', '内容创作者', '产品开发者', '独立创业者'];
 ---
 
@@ -13,47 +13,8 @@ const roles = ['AI Agent 构建者', '内容创作者', '产品开发者', '独�
     <div class="absolute inset-0 bg-[linear-gradient(rgba(20,184,166,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(20,184,166,0.03)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
   </div>
 
-  <!-- Right Side Visual Element -->
-  <div class="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[600px] pointer-events-none">
-    <div class="relative w-full h-full">
-      <!-- Orbit Ring 1 -->
-      <div class="absolute inset-0 flex items-center justify-center">
-        <div class="w-[400px] h-[400px] rounded-full border border-teal-500/10 animate-[spin_30s_linear_infinite]">
-          <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-teal-400/60 rounded-full animate-pulse"></div>
-        </div>
-      </div>
-      <!-- Orbit Ring 2 -->
-      <div class="absolute inset-0 flex items-center justify-center">
-        <div class="w-[300px] h-[300px] rounded-full border border-teal-500/15 animate-[spin_20s_linear_infinite_reverse]">
-          <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 bg-teal-400/40 rounded-full"></div>
-        </div>
-      </div>
-      <!-- Orbit Ring 3 -->
-      <div class="absolute inset-0 flex items-center justify-center">
-        <div class="w-[200px] h-[200px] rounded-full border border-teal-500/20 animate-[spin_15s_linear_infinite]">
-          <div class="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-teal-400/50 rounded-full animate-pulse"></div>
-        </div>
-      </div>
-      <!-- Center Element -->
-      <div class="absolute inset-0 flex items-center justify-center">
-        <div class="relative">
-          <!-- Glow -->
-          <div class="absolute inset-0 w-24 h-24 bg-teal-400/20 rounded-full blur-xl animate-breathe"></div>
-          <!-- Core -->
-          <div class="w-24 h-24 rounded-full border-2 border-teal-400/30 flex items-center justify-center animate-breathe">
-            <div class="w-16 h-16 rounded-full border border-teal-400/40 flex items-center justify-center">
-              <div class="w-8 h-8 bg-teal-400/20 rounded-full animate-pulse"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Floating dots -->
-      <div class="absolute top-[15%] left-[20%] w-1.5 h-1.5 bg-teal-400/30 rounded-full animate-float-slow"></div>
-      <div class="absolute top-[25%] right-[15%] w-1 h-1 bg-teal-400/20 rounded-full animate-float-slow" style="animation-delay: -2s;"></div>
-      <div class="absolute bottom-[30%] left-[25%] w-1.5 h-1.5 bg-teal-400/25 rounded-full animate-float-slow" style="animation-delay: -4s;"></div>
-      <div class="absolute bottom-[20%] right-[20%] w-1 h-1 bg-teal-400/30 rounded-full animate-float-slow" style="animation-delay: -1s;"></div>
-    </div>
-  </div>
+  <!-- 3D Canvas Container -->
+  <div id="hero-3d-container" class="hidden lg:block absolute right-0 top-0 w-1/2 h-full pointer-events-auto"></div>
 
   <div class="container mx-auto px-6 relative z-10">
     <div class="max-w-4xl">
@@ -132,6 +93,7 @@ const roles = ['AI Agent 构建者', '内容创作者', '产品开发者', '独�
 </section>
 
 <script>
+  // Typewriter effect
   const roles = ['AI Agent 构建者', '内容创作者', '产品开发者', '独立创业者'];
   let roleIndex = 0;
   let charIndex = 0;
@@ -164,4 +126,185 @@ const roles = ['AI Agent 构建者', '内容创作者', '产品开发者', '独�
   }
 
   type();
+</script>
+
+<!-- Three.js 3D Scene -->
+<script type="module">
+  // Load Three.js from CDN
+  import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+
+  // Check if container exists (desktop only)
+  const container = document.getElementById('hero-3d-container');
+  if (!container) {
+    throw new Error('Container not found');
+  }
+
+  // Scene setup
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 1000);
+  camera.position.z = 5;
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setClearColor(0x000000, 0);
+  container.appendChild(renderer.domElement);
+
+  // Teal color palette
+  const tealMain = new THREE.Color(0x14b8a6);
+  const tealLight = new THREE.Color(0x2dd4bf);
+  const tealDark = new THREE.Color(0x0d9488);
+
+  // Main icosahedron (center piece)
+  const icoGeometry = new THREE.IcosahedronGeometry(1.2, 1);
+  const icoMaterial = new THREE.MeshBasicMaterial({
+    color: tealMain,
+    wireframe: true,
+    transparent: true,
+    opacity: 0.4
+  });
+  const icosahedron = new THREE.Mesh(icoGeometry, icoMaterial);
+  scene.add(icosahedron);
+
+  // Inner icosahedron
+  const innerIcoGeometry = new THREE.IcosahedronGeometry(0.8, 0);
+  const innerIcoMaterial = new THREE.MeshBasicMaterial({
+    color: tealLight,
+    wireframe: true,
+    transparent: true,
+    opacity: 0.25
+  });
+  const innerIcosahedron = new THREE.Mesh(innerIcoGeometry, innerIcoMaterial);
+  scene.add(innerIcosahedron);
+
+  // Core sphere with glow effect
+  const coreGeometry = new THREE.SphereGeometry(0.3, 16, 16);
+  const coreMaterial = new THREE.MeshBasicMaterial({
+    color: tealLight,
+    transparent: true,
+    opacity: 0.6
+  });
+  const core = new THREE.Mesh(coreGeometry, coreMaterial);
+  scene.add(core);
+
+  // Orbiting smaller shapes
+  const orbitingShapes = [];
+  const orbitRadii = [2.2, 2.8, 3.2];
+  const orbitSpeeds = [0.3, 0.2, 0.15];
+  const orbitOffsets = [0, Math.PI * 0.66, Math.PI * 1.33];
+
+  for (let i = 0; i < 3; i++) {
+    // Create different shapes
+    let geometry;
+    if (i === 0) {
+      geometry = new THREE.OctahedronGeometry(0.15, 0);
+    } else if (i === 1) {
+      geometry = new THREE.TetrahedronGeometry(0.12, 0);
+    } else {
+      geometry = new THREE.BoxGeometry(0.12, 0.12, 0.12);
+    }
+
+    const material = new THREE.MeshBasicMaterial({
+      color: tealMain,
+      transparent: true,
+      opacity: 0.5
+    });
+    const shape = new THREE.Mesh(geometry, material);
+    orbitingShapes.push(shape);
+    scene.add(shape);
+  }
+
+  // Particle stars
+  const particlesCount = 150;
+  const particlesGeometry = new THREE.BufferGeometry();
+  const positions = new Float32Array(particlesCount * 3);
+
+  for (let i = 0; i < particlesCount; i++) {
+    const i3 = i * 3;
+    const radius = 3 + Math.random() * 4;
+    const theta = Math.random() * Math.PI * 2;
+    const phi = Math.acos(2 * Math.random() - 1);
+
+    positions[i3] = radius * Math.sin(phi) * Math.cos(theta);
+    positions[i3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
+    positions[i3 + 2] = radius * Math.cos(phi);
+  }
+
+  particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+  const particlesMaterial = new THREE.PointsMaterial({
+    color: tealLight,
+    size: 0.03,
+    transparent: true,
+    opacity: 0.6,
+    sizeAttenuation: true
+  });
+
+  const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+  scene.add(particles);
+
+  // Mouse interaction
+  let mouseX = 0;
+  let mouseY = 0;
+  let targetX = 0;
+  let targetY = 0;
+
+  document.addEventListener('mousemove', (event) => {
+    mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+    mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+  });
+
+  // Animation loop
+  let time = 0;
+
+  function animate() {
+    requestAnimationFrame(animate);
+    time += 0.01;
+
+    // Smooth mouse follow
+    targetX += (mouseX - targetX) * 0.05;
+    targetY += (mouseY - targetY) * 0.05;
+
+    // Rotate main shapes
+    icosahedron.rotation.x = time * 0.15 + targetY * 0.3;
+    icosahedron.rotation.y = time * 0.1 + targetX * 0.3;
+
+    innerIcosahedron.rotation.x = -time * 0.2 + targetY * 0.2;
+    innerIcosahedron.rotation.y = -time * 0.15 + targetX * 0.2;
+
+    core.rotation.y = time * 0.3;
+
+    // Pulse core
+    const pulse = 1 + Math.sin(time * 2) * 0.1;
+    core.scale.set(pulse, pulse, pulse);
+
+    // Orbit smaller shapes
+    orbitingShapes.forEach((shape, i) => {
+      const angle = time * orbitSpeeds[i] + orbitOffsets[i];
+      const radius = orbitRadii[i];
+
+      shape.position.x = Math.cos(angle) * radius;
+      shape.position.y = Math.sin(angle * 0.5) * 0.5;
+      shape.position.z = Math.sin(angle) * radius;
+
+      shape.rotation.x = time * 0.5;
+      shape.rotation.y = time * 0.3;
+    });
+
+    // Rotate particles slowly
+    particles.rotation.y = time * 0.02;
+    particles.rotation.x = time * 0.01;
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+
+  // Handle resize
+  window.addEventListener('resize', () => {
+    if (!container) return;
+    camera.aspect = container.clientWidth / container.clientHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(container.clientWidth, container.clientHeight);
+  });
 </script>
