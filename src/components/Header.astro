@@ -2,25 +2,32 @@
 // Header component with navigation
 ---
 
-<header class="fixed top-0 left-0 right-0 w-full z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800">
+<header class="fixed top-0 left-0 right-0 w-full z-50 bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-[#2a2a2a]/50">
   <div class="container mx-auto px-6 flex justify-between items-center h-16">
-    <a href="/" class="text-xl font-bold tracking-tight">
-      <span class="text-orange-500">OPC</span>
-      <span class="text-slate-300">FOUNDER</span>
+    <a href="/" class="text-xl font-bold tracking-tight group">
+      <span class="text-teal-400 group-hover:text-teal-300 transition-colors">OPC</span>
+      <span class="text-white/80 group-hover:text-white transition-colors">FOUNDER</span>
     </a>
     <nav class="hidden md:flex items-center gap-8">
-      <a href="/#projects" class="text-slate-400 hover:text-orange-500 transition-colors text-sm font-medium">
+      <a href="/#projects" class="relative text-white/60 hover:text-teal-400 transition-colors text-sm font-medium group">
         项目
+        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 group-hover:w-full transition-all duration-300"></span>
       </a>
-      <a href="/#about" class="text-slate-400 hover:text-orange-500 transition-colors text-sm font-medium">
+      <a href="/#skills" class="relative text-white/60 hover:text-teal-400 transition-colors text-sm font-medium group">
+        技能
+        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 group-hover:w-full transition-all duration-300"></span>
+      </a>
+      <a href="/#about" class="relative text-white/60 hover:text-teal-400 transition-colors text-sm font-medium group">
         关于
+        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 group-hover:w-full transition-all duration-300"></span>
       </a>
-      <a href="/blog" class="text-slate-400 hover:text-orange-500 transition-colors text-sm font-medium">
+      <a href="/blog" class="relative text-white/60 hover:text-teal-400 transition-colors text-sm font-medium group">
         文章
+        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 group-hover:w-full transition-all duration-300"></span>
       </a>
     </nav>
     <!-- Mobile menu button -->
-    <button class="md:hidden text-slate-400 hover:text-orange-500" aria-label="Menu">
+    <button class="md:hidden text-white/60 hover:text-teal-400 transition-colors" aria-label="Menu">
       <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
         <line x1="3" y1="6" x2="21" y2="6"/>
         <line x1="3" y1="12" x2="21" y2="12"/>

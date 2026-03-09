@@ -1,44 +1,113 @@
 ---
-// About section - Minimal style
+// About section - Personal story with visual elements
+
+const values = [
+  {
+    title: '自由',
+    description: '掌控时间与方向',
+    icon: `<svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M12 6v6l4 2"/>
+      <path d="M16 16l2 2"/>
+    </svg>`
+  },
+  {
+    title: '灵活',
+    description: '快速决策迭代',
+    icon: `<svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+    </svg>`
+  },
+  {
+    title: '专注',
+    description: '做热爱的事',
+    icon: `<svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+    </svg>`
+  },
+  {
+    title: '多元',
+    description: '探索不同可能',
+    icon: `<svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="3"/>
+      <circle cx="12" cy="5" r="2"/>
+      <circle cx="19" cy="12" r="2"/>
+      <circle cx="12" cy="19" r="2"/>
+      <circle cx="5" cy="12" r="2"/>
+      <line x1="12" y1="8" x2="12" y2="9"/>
+      <line x1="15" y1="12" x2="17" y2="12"/>
+      <line x1="12" y1="15" x2="12" y2="17"/>
+      <line x1="7" y1="12" x2="9" y2="12"/>
+    </svg>`
+  }
+];
+
+const highlights = [
+  { number: '5+', label: '年技术经验' },
+  { number: '10+', label: '完成项目' },
+  { number: '100%', label: '独立运营' }
+];
 ---
 
-<section id="about" class="py-20 bg-slate-950">
+<section id="about" class="py-24 bg-[#0a0a0a]">
   <div class="container mx-auto px-6">
-    <div class="max-w-3xl mx-auto">
-      <!-- Section Header -->
-      <div class="mb-12">
-        <h2 class="text-2xl font-bold text-white mb-2">关于</h2>
-        <p class="text-slate-500">一人公司的多元探索</p>
+    <!-- Section Header -->
+    <div class="max-w-3xl mx-auto mb-16 animate-on-scroll">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-12 h-[2px] bg-teal-500"></div>
+        <span class="text-teal-400 text-sm font-medium uppercase tracking-wider">About</span>
       </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">关于我</h2>
+      <p class="text-white/50 text-lg">一人公司的多元探索</p>
+    </div>
 
-      <!-- Content -->
-      <div class="prose prose-invert max-w-none">
-        <p class="text-slate-300 leading-relaxed mb-8">
-          我是一名<span class="text-orange-400">一人公司（One Person Company）</span>的实践者。
-        </p>
-        <p class="text-slate-400 leading-relaxed">
-          我相信，一个人也可以构建有价值的商业，创造有意义的产品，          活出不一样的人生。从 AI Agent 到内容创作，从产品开发到更多未知领域
-          我在不断探索一人公司的边界。
-        </p>
-      </div>
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Left: Story -->
+        <div class="animate-on-scroll">
+          <div class="prose prose-lg">
+            <p class="text-xl text-white/80 leading-relaxed mb-6">
+              我是一名<span class="text-teal-400 font-semibold">一人公司（One Person Company）</span>的实践者。
+            </p>
+            <p class="text-white/50 leading-relaxed mb-6">
+              我相信，一个人也可以构建有价值的商业，创造有意义的产品，活出不一样的人生。
+            </p>
+            <p class="text-white/50 leading-relaxed mb-8">
+              从 AI Agent 到内容创作，从产品开发到更多未知领域——我在不断探索一人公司的边界。每一个项目都是一次实验，每一篇文章都是一次记录。
+            </p>
+          </div>
 
-      <!-- Values -->
-      <div class="grid md:grid-cols-2 gap-4 mt-10">
-        <div class="p-4 bg-slate-900/50 rounded-lg border border-slate-800">
-          <div class="text-orange-400 font-semibold">自由</div>
-          <div class="text-slate-500 text-sm mt-1">掌控时间与方向</div>
+          <!-- Highlights -->
+          <div class="grid grid-cols-3 gap-4 pt-8 border-t border-[#2a2a2a]">
+            {highlights.map((item) => (
+              <div class="text-center">
+                <div class="text-3xl font-bold text-teal-400 mb-1">{item.number}</div>
+                <div class="text-white/40 text-sm">{item.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
-        <div class="p-4 bg-slate-900/50 rounded-lg border border-slate-800">
-          <div class="text-orange-400 font-semibold">灵活</div>
-          <div class="text-slate-500 text-sm mt-1">快速决策迭代</div>
-        </div>
-        <div class="p-4 bg-slate-900/50 rounded-lg border border-slate-800">
-          <div class="text-orange-400 font-semibold">专注</div>
-          <div class="text-slate-500 text-sm mt-1">做热爱的事</div>
-        </div>
-        <div class="p-4 bg-slate-900/50 rounded-lg border border-slate-800">
-          <div class="text-orange-400 font-semibold">多元</div>
-          <div class="text-slate-500 text-sm mt-1">探索不同可能</div>
+
+        <!-- Right: Values -->
+        <div class="animate-on-scroll" style="animation-delay: 100ms">
+          <div class="grid grid-cols-2 gap-4">
+            {values.map((value, index) => (
+              <div class="group p-6 bg-[#111111] rounded-2xl border border-[#2a2a2a] hover:border-teal-500/30 transition-all duration-300" style={`animation-delay: ${index * 50}ms`}>
+                <div class="w-12 h-12 mb-4 p-2.5 bg-teal-500/10 rounded-xl text-teal-400 group-hover:bg-teal-500/20 transition-colors">
+                  <Fragment set:html={value.icon} />
+                </div>
+                <h3 class="text-lg font-bold text-white mb-1 group-hover:text-teal-400 transition-colors">{value.title}</h3>
+                <p class="text-white/40 text-sm">{value.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <!-- Quote -->
+          <div class="mt-6 p-6 bg-gradient-to-br from-teal-500/10 to-transparent rounded-2xl border border-teal-500/20">
+            <blockquote class="text-white/70 italic">
+              "一个人也能创造非凡的价值。关键不在于团队的大小，而在于对目标的执着和对品质的追求。"
+            </blockquote>
+          </div>
         </div>
       </div>
     </div>

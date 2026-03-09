@@ -1,56 +1,125 @@
 ---
-// Hero section - Clean minimal design
+// Hero section - Dynamic creative design
+const roles = ['AI Agent 构建者', '内容创作者', '产品开发者', '独立创业者'];
 ---
 
-<section class="min-h-[70vh] flex items-center bg-slate-950 pt-16">
-  <div class="container mx-auto px-6">
-    <div class="max-w-3xl">
-      <!-- Tagline -->
-      <p class="text-orange-500 text-sm font-medium tracking-wider uppercase mb-4">
-        One Person Company
-      </p>
+<section class="min-h-screen flex items-center relative overflow-hidden pt-16">
+  <!-- Background Effects -->
+  <div class="absolute inset-0 bg-[#0a0a0a]">
+    <!-- Gradient orbs -->
+    <div class="absolute top-1/4 -left-32 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl animate-float"></div>
+    <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-teal-400/5 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+    <!-- Grid pattern -->
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(20,184,166,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(20,184,166,0.03)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="max-w-4xl">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-teal-500/10 border border-teal-500/20 rounded-full mb-8 animate-fade-in-up">
+        <span class="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></span>
+        <span class="text-teal-400 text-sm font-medium">One Person Company</span>
+      </div>
 
       <!-- Main Title -->
-      <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
-        一个人的<br/>
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-500">多元探索</span>
+      <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 animate-fade-in-up delay-100">
+        <span class="text-white">一个人的</span>
+        <br/>
+        <span class="gradient-text">多元探索</span>
       </h1>
 
+      <!-- Typewriter Effect -->
+      <div class="flex items-center gap-3 mb-8 animate-fade-in-up delay-200">
+        <span class="text-white/60 text-lg">我是</span>
+        <span id="typewriter" class="text-teal-400 text-lg font-medium"></span>
+        <span class="w-0.5 h-6 bg-teal-400 animate-pulse"></span>
+      </div>
+
       <!-- Description -->
-      <p class="text-lg text-slate-400 leading-relaxed mb-8 max-w-xl">
-        用 AI Agent 构建产品，用内容记录成长，用代码解决问题。
+      <p class="text-lg md:text-xl text-white/50 leading-relaxed mb-10 max-w-2xl animate-fade-in-up delay-300">
+        用 <span class="text-teal-400">AI Agent</span> 构建产品，用内容记录成长，用代码解决问题。
+        <br class="hidden md:block"/>
         这是关于一个人如何做很多事情的故事。
       </p>
 
-      <!-- CTA -->
-      <div class="flex flex-wrap gap-4">
-        <a href="#projects" class="px-6 py-3 bg-orange-500 text-white font-medium rounded-lg hover:bg-orange-600 transition-colors">
+      <!-- CTA Buttons -->
+      <div class="flex flex-wrap gap-4 animate-fade-in-up delay-400">
+        <a href="#projects" class="group px-8 py-4 bg-teal-500 text-white font-semibold rounded-xl hover:bg-teal-400 transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/25 flex items-center gap-2">
           查看项目
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
         </a>
-        <a href="/blog" class="px-6 py-3 bg-slate-800 text-white font-medium rounded-lg hover:bg-orange-500 transition-colors">
+        <a href="/blog" class="px-8 py-4 bg-white/5 text-white font-semibold rounded-xl border border-white/10 hover:border-teal-500/50 hover:bg-teal-500/10 transition-all duration-300">
           阅读文章
         </a>
       </div>
     </div>
   </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <div class="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center pt-2">
+      <div class="w-1.5 h-3 bg-teal-400 rounded-full animate-pulse"></div>
+    </div>
+  </div>
 </section>
 
-<!-- Brief intro strip -->
-<section class="bg-slate-900 py-12 border-y border-slate-800">
+<!-- Stats Strip -->
+<section class="py-16 bg-[#111111] border-y border-[#2a2a2a]/50">
   <div class="container mx-auto px-6">
-    <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
-      <div>
-        <div class="text-3xl font-bold text-orange-500 mb-1">OpenClaw</div>
-        <div class="text-slate-500 text-sm">AI Agent 项目</div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div class="text-center group">
+        <div class="text-3xl md:text-4xl font-bold text-white mb-2 group-hover:text-teal-400 transition-colors">OpenClaw</div>
+        <div class="text-white/40 text-sm">AI Agent 项目</div>
       </div>
-      <div>
-        <div class="text-3xl font-bold text-white mb-1">自媒体</div>
-        <div class="text-slate-500 text-sm">内容创作与分享</div>
+      <div class="text-center group">
+        <div class="text-3xl md:text-4xl font-bold text-white mb-2 group-hover:text-teal-400 transition-colors">3+</div>
+        <div class="text-white/40 text-sm">进行中的项目</div>
       </div>
-      <div>
-        <div class="text-3xl font-bold text-white mb-1">产品开发</div>
-        <div class="text-slate-500 text-sm">独立开发 SaaS</div>
+      <div class="text-center group">
+        <div class="text-3xl md:text-4xl font-bold text-white mb-2 group-hover:text-teal-400 transition-colors">2026</div>
+        <div class="text-white/40 text-sm">启程年份</div>
+      </div>
+      <div class="text-center group">
+        <div class="text-3xl md:text-4xl font-bold text-white mb-2 group-hover:text-teal-400 transition-colors">独立</div>
+        <div class="text-white/40 text-sm">一人公司模式</div>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  const roles = ['AI Agent 构建者', '内容创作者', '产品开发者', '独立创业者'];
+  let roleIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  const typewriter = document.getElementById('typewriter');
+
+  function type() {
+    const currentRole = roles[roleIndex];
+
+    if (isDeleting) {
+      typewriter.textContent = currentRole.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      typewriter.textContent = currentRole.substring(0, charIndex + 1);
+      charIndex++;
+    }
+
+    let typeSpeed = isDeleting ? 50 : 100;
+
+    if (!isDeleting && charIndex === currentRole.length) {
+      typeSpeed = 2000;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+      typeSpeed = 500;
+    }
+
+    setTimeout(type, typeSpeed);
+  }
+
+  type();
+</script>

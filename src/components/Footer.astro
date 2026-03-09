@@ -3,38 +3,58 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
-  <div class="container mx-auto px-6">
-    <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-      <!-- Logo & Tagline -->
-      <div class="text-center md:text-left">
-        <a href="/" class="text-xl font-bold tracking-tight">
-          <span class="text-orange-500">OPC</span>
-          <span class="text-slate-300">FOUNDER</span>
-        </a>
-        <p class="text-slate-500 text-sm mt-2">一个人的多元探索之旅</p>
+<footer class="bg-[#0a0a0a] border-t border-[#2a2a2a]">
+  <div class="container mx-auto px-6 py-16">
+    <div class="max-w-6xl mx-auto">
+      <!-- Top Section -->
+      <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
+        <!-- Logo & Description -->
+        <div class="max-w-md">
+          <a href="/" class="text-2xl font-bold tracking-tight inline-block mb-4">
+            <span class="text-teal-400">OPC</span>
+            <span class="text-white">FOUNDER</span>
+          </a>
+          <p class="text-white/40 text-sm leading-relaxed">
+            一人公司的多元探索之旅。用 AI Agent 构建产品，用内容记录成长，用代码解决问题。
+          </p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="grid grid-cols-2 gap-12">
+          <div>
+            <h4 class="text-white font-semibold mb-4">导航</h4>
+            <nav class="flex flex-col gap-3">
+              <a href="/#projects" class="text-white/40 hover:text-teal-400 transition-colors text-sm">项目</a>
+              <a href="/#skills" class="text-white/40 hover:text-teal-400 transition-colors text-sm">技能</a>
+              <a href="/#about" class="text-white/40 hover:text-teal-400 transition-colors text-sm">关于</a>
+              <a href="/blog" class="text-white/40 hover:text-teal-400 transition-colors text-sm">文章</a>
+            </nav>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold mb-4">联系</h4>
+            <nav class="flex flex-col gap-3">
+              <a href="mailto:joneclub1990@gmail.com" class="text-white/40 hover:text-teal-400 transition-colors text-sm">joneclub1990@gmail.com</a>
+            </nav>
+          </div>
+        </div>
       </div>
 
-      <!-- Navigation -->
-      <nav class="flex flex-wrap justify-center gap-6">
-        <a href="/#projects" class="text-slate-500 hover:text-orange-500 transition-colors text-sm">
-          项目
-        </a>
-        <a href="/#about" class="text-slate-500 hover:text-orange-500 transition-colors text-sm">
-          关于
-        </a>
-        <a href="/blog" class="text-slate-500 hover:text-orange-500 transition-colors text-sm">
-          文章
-        </a>
-      </nav>
-
-    </div>
-
-    <!-- Copyright -->
-    <div class="mt-12 pt-8 border-t border-slate-800 text-center">
-      <p class="text-slate-600 text-sm">
-        &copy; {currentYear} OPC Founder. All rights reserved.
-      </p>
+      <!-- Bottom Section -->
+      <div class="pt-8 border-t border-[#2a2a2a] flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-white/30 text-sm">
+          &copy; {currentYear} OPC Founder. All rights reserved.
+        </p>
+        <div class="flex items-center gap-2 text-white/30 text-sm">
+          <span>Built with</span>
+          <svg class="w-4 h-4 text-teal-400" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+          <span>&</span>
+          <svg class="w-4 h-4 text-teal-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+        </div>
+      </div>
     </div>
   </div>
 </footer>

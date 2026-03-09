@@ -1,5 +1,5 @@
 ---
-// Projects section - Clean list style
+// Projects section - Card grid with hover effects
 
 const projects = [
   {
@@ -8,7 +8,10 @@ const projects = [
     description: '基于大语言模型的智能 Agent，帮助自动化工作流程，提升效率。',
     link: 'https://openclaw.com',
     status: 'active',
-    tags: ['AI', 'Agent', '自动化']
+    tags: ['AI', 'Agent', '自动化'],
+    icon: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+    </svg>`
   },
   {
     title: '自媒体',
@@ -16,71 +19,85 @@ const projects = [
     description: '在各平台分享创业心得、技术干货，记录一人公司的成长历程。',
     link: '#',
     status: 'active',
-    tags: ['内容', '创业']
+    tags: ['内容', '创业', '分享'],
+    icon: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+    </svg>`
   },
   {
-    title: '产品开发',
-    subtitle: '独立 SaaS 项目',
+    title: 'SaaS 产品',
+    subtitle: '独立开发项目',
     description: '从想法到上线，用代码解决真实问题，构建有价值的数字产品。',
     link: '#',
     status: 'building',
-    tags: ['技术', 'SaaS']
+    tags: ['技术', 'SaaS', '独立开发'],
+    icon: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+    </svg>`
   }
 ];
 
 const statusConfig = {
-  active: { text: '进行中', class: 'bg-green-500/10 text-green-400 border-green-500/20' },
-  building: { text: '构建中', class: 'bg-amber-500/10 text-amber-400 border-amber-500/20' }
+  active: { text: '进行中', class: 'bg-teal-500/10 text-teal-400 border-teal-500/30' },
+  building: { text: '构建中', class: 'bg-amber-500/10 text-amber-400 border-amber-500/30' }
 };
 ---
 
-<section id="projects" class="py-20 bg-slate-950">
+<section id="projects" class="py-24 bg-[#0a0a0a]">
   <div class="container mx-auto px-6">
-    <div class="max-w-3xl mx-auto">
-      <!-- Section Header -->
-      <div class="mb-12">
-        <h2 class="text-2xl font-bold text-white mb-2">项目</h2>
-        <p class="text-slate-500">正在做的事情</p>
+    <!-- Section Header -->
+    <div class="max-w-3xl mx-auto mb-16 animate-on-scroll">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-12 h-[2px] bg-teal-500"></div>
+        <span class="text-teal-400 text-sm font-medium uppercase tracking-wider">Projects</span>
       </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">正在做的事情</h2>
+      <p class="text-white/50 text-lg">探索一人公司的多种可能性</p>
+    </div>
 
-      <!-- Projects List -->
-      <div class="space-y-6">
-        {projects.map((project) => (
-          <a
-            href={project.link}
-            class="block group p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-slate-700 transition-all"
-          >
-            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-              <div class="flex-1">
-                <div class="flex items-center gap-3 mb-2">
-                  <h3 class="text-lg font-semibold text-white group-hover:text-orange-400 transition-colors">
-                    {project.title}
-                  </h3>
-                  <span class={`px-2 py-0.5 text-xs rounded border ${statusConfig[project.status as keyof typeof statusConfig].class}`}>
-                    {statusConfig[project.status as keyof typeof statusConfig].text}
-                  </span>
-                </div>
-                <p class="text-slate-500 text-sm mb-2">{project.subtitle}</p>
-                <p class="text-slate-400 text-sm leading-relaxed">{project.description}</p>
-
-                <!-- Tags -->
-                <div class="flex gap-2 mt-3">
-                  {project.tags.map((tag) => (
-                    <span class="text-xs text-slate-600">#{tag}</span>
-                  ))}
-                </div>
-              </div>
-
-              <!-- Arrow -->
-              <div class="text-slate-600 group-hover:text-orange-500 transition-colors self-end md:self-center">
-                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </div>
+    <!-- Projects Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      {projects.map((project, index) => (
+        <a
+          href={project.link}
+          class="group block p-8 bg-[#111111] rounded-2xl border border-[#2a2a2a] card-hover animate-on-scroll"
+          style={`animation-delay: ${index * 100}ms`}
+        >
+          <!-- Icon & Status -->
+          <div class="flex items-start justify-between mb-6">
+            <div class="p-3 bg-teal-500/10 rounded-xl text-teal-400 group-hover:bg-teal-500/20 transition-colors">
+              <Fragment set:html={project.icon} />
             </div>
-          </a>
-        ))}
-      </div>
+            <span class={`px-3 py-1 text-xs font-medium rounded-full border ${statusConfig[project.status as keyof typeof statusConfig].class}`}>
+              {statusConfig[project.status as keyof typeof statusConfig].text}
+            </span>
+          </div>
+
+          <!-- Content -->
+          <h3 class="text-xl font-bold text-white mb-1 group-hover:text-teal-400 transition-colors">
+            {project.title}
+          </h3>
+          <p class="text-white/40 text-sm mb-3">{project.subtitle}</p>
+          <p class="text-white/50 text-sm leading-relaxed mb-6">{project.description}</p>
+
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-2 mb-6">
+            {project.tags.map((tag) => (
+              <span class="px-3 py-1 text-xs text-white/40 bg-white/5 rounded-full group-hover:bg-teal-500/10 group-hover:text-teal-400/70 transition-colors">
+                #{tag}
+              </span>
+            ))}
+          </div>
+
+          <!-- Arrow -->
+          <div class="flex items-center text-teal-400/60 group-hover:text-teal-400 transition-colors">
+            <span class="text-sm font-medium">了解更多</span>
+            <svg class="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </a>
+      ))}
     </div>
   </div>
 </section>
