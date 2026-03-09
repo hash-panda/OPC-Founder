@@ -5,9 +5,24 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  article?: boolean;
+  publishedTime?: Date;
+  modifiedTime?: Date;
 }
 
-const { title = 'OPC Founder', description = '一人公司创始人的多元探索' } = Astro.props;
+const {
+  title = 'OPC Founder',
+  description = '一人公司创始人的多元探索',
+  image = '/og-image.png',
+  article = false,
+  publishedTime,
+  modifiedTime
+} = Astro.props;
+
+const siteUrl = 'https://opcfounder.com';
+const fullTitle = title === 'OPC Founder' ? title : `${title} - OPC Founder`;
+const imageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
 ---
 
 <!DOCTYPE html>
@@ -16,12 +31,45 @@ const { title = 'OPC Founder', description = '一人公司创始人的多元探�
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="author" content="OPC Founder" />
+    <meta name="keywords" content="一人公司,创业,AI,AI Agent,独立开发者,个人创业" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title}</title>
+    <title>{fullTitle}</title>
+
+    <!-- RSS -->
     <link rel="alternate" type="application/rss+xml" title="OPC Founder Blog" href="/rss.xml" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:url" content={siteUrl + Astro.url.pathname} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:site_name" content="OPC Founder" />
+    <meta property="og:locale" content="zh_CN" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={siteUrl + Astro.url.pathname} />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+
+    <!-- Article specific meta -->
+    {article && publishedTime && (
+      <meta property="article:published_time" content={publishedTime.toISOString()} />
+    )}
+    {article && modifiedTime && (
+      <meta property="article:modified_time" content={modifiedTime.toISOString()} />
+    )}
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={siteUrl + Astro.url.pathname} />
   </head>
   <body class="bg-[#0a0a0a] text-white antialiased font-['Inter',sans-serif]">
     <Header />
