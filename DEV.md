@@ -71,14 +71,20 @@ OPC-Founder/
 │   │   └── Footer.astro
 │   ├── content/         # Content collections
 │   │   └── blog/        # Blog posts (Markdown)
+│   │       ├── why-opc.md
+│   │       ├── first-product.md
+│   │       └── ai-agent-exploration.md
 │   ├── layouts/
-│   │   └── Layout.astro # Base layout
-│   └── pages/           # Routes
-│       ├── index.astro  # Homepage
-│       └── blog/
-│           └── index.astro
+│   │   └── Layout.astro # Base layout with global styles
+│   ├── pages/           # Routes
+│   │   ├── index.astro  # Homepage
+│   │   └── blog/
+│   │       ├── index.astro      # Blog list page
+│   │       └── [slug].astro     # Blog detail page (dynamic)
+│   ├── styles/
+│   │   └── global.css   # Global styles (Tailwind v4)
+│   └── content.config.ts # Content collections config
 ├── astro.config.mjs     # Astro configuration
-├── tailwind.config.mjs  # Tailwind configuration
 └── package.json
 ```
 
@@ -96,12 +102,14 @@ OPC-Founder/
 
 ## Roadmap
 
-- [ ] 添加博客文章详情页
+- [x] 添加博客文章详情页
+- [x] 博客 Markdown 样式支持
 - [ ] 集成评论系统
 - [ ] 添加 RSS 订阅
 - [ ] 多语言支持 (i18n)
 - [ ] 更多 3D 交互效果
 - [ ] 性能优化与 SEO 增强
+- [ ] 代码块语法高亮
 
 ## License
 
