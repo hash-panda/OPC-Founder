@@ -52,7 +52,7 @@ const statusConfig = {
         <span class="text-teal-400 text-sm font-medium uppercase tracking-wider">Projects</span>
       </div>
       <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">正在做的事情</h2>
-      <p class="text-white/50 text-lg">探索一人公司的多种可能性</p>
+      <p class="text-white/60 text-lg">探索一人公司的多种可能性</p>
     </div>
 
     <!-- Projects Grid -->
@@ -77,13 +77,13 @@ const statusConfig = {
           <h3 class="text-xl font-bold text-white mb-1 group-hover:text-teal-400 transition-colors">
             {project.title}
           </h3>
-          <p class="text-white/40 text-sm mb-3">{project.subtitle}</p>
-          <p class="text-white/50 text-sm leading-relaxed mb-6">{project.description}</p>
+          <p class="text-white/50 text-sm mb-3">{project.subtitle}</p>
+          <p class="text-white/60 text-sm leading-relaxed mb-6">{project.description}</p>
 
           <!-- Tags -->
           <div class="flex flex-wrap gap-2 mb-6">
             {project.tags.map((tag) => (
-              <span class="px-3 py-1 text-xs text-white/40 bg-white/5 rounded-full group-hover:bg-teal-500/10 group-hover:text-teal-400/70 transition-colors">
+              <span class="px-3 py-1 text-xs text-white/50 bg-white/5 rounded-full group-hover:bg-teal-500/10 group-hover:text-teal-400/70 transition-colors">
                 #{tag}
               </span>
             ))}

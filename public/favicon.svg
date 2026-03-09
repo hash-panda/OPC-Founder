@@ -1,4 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 128 128">
-  <rect width="128" height="128" rx="20" fill="#EA580C"/>
-  <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="white">O</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2dd4bf"/>
+      <stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Dark background with rounded corners -->
+  <rect width="128" height="128" rx="28" fill="#0a0a0a"/>
+
+  <!-- Teal accent ring -->
+  <circle cx="64" cy="64" r="50" fill="none" stroke="url(#g)" stroke-width="4"/>
+
+  <!-- Center dot - represents "one person" -->
+  <circle cx="64" cy="64" r="16" fill="url(#g)"/>
 </svg>
