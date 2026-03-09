@@ -18,7 +18,13 @@ function formatDate(date: Date) {
 }
 ---
 
-<Layout title={`${post.data.title} - OPC Founder`}>
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  article={true}
+  publishedTime={post.data.pubDate}
+  modifiedTime={post.data.updatedDate}
+>
   <article class="py-20 pt-28 min-h-screen bg-[#0a0a0a]">
     <div class="container mx-auto px-6">
       <div class="max-w-3xl mx-auto">
